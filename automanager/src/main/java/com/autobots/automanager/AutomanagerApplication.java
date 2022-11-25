@@ -225,6 +225,40 @@ public class AutomanagerApplication implements CommandLineRunner {
 		empresa.getVendas().add(venda);
 
 		repositorioEmpresa.save(empresa);
+		
+		Mercadoria rodaLigaLeve2 = new Mercadoria();
+		rodaLigaLeve2.setCadastro(new Date());
+		rodaLigaLeve2.setFabricao(new Date());
+		rodaLigaLeve2.setNome("Roda de liga leva modelo toyota etios");
+		rodaLigaLeve2.setValidade(new Date());
+		rodaLigaLeve2.setQuantidade(30);
+		rodaLigaLeve2.setValor(300.0);
+		rodaLigaLeve2.setDescricao("Roda de liga leve original de fábrica da toyta para modelos do tipo hatch");
+		
+		Servico alinhamento2 = new Servico();
+		alinhamento2.setDescricao("Alinhamento das rodas do carro");
+		alinhamento2.setNome("Alinhamento de rodas");
+		alinhamento2.setValor(50);
+		
+		Servico balanceamento = new Servico();
+		balanceamento.setDescricao("balanceamento das rodas do carro");
+		balanceamento.setNome("balanceamento de rodas");
+		balanceamento.setValor(30);
+		
+		Venda venda2 = new Venda();
+		venda2.setCadastro(new Date());
+		venda2.setCliente(cliente);
+		venda2.getMercadorias().add(rodaLigaLeve2);
+		venda2.setIdentificacao("1234698749");
+		venda2.setFuncionario(funcionario);
+		venda2.getServicos().add(balanceamento);
+		venda2.getServicos().add(alinhamento2);
+		venda2.setVeiculo(veiculo);
+		veiculo.getVendas().add(venda2);
+
+		empresa.getVendas().add(venda2);
+		
+		repositorioEmpresa.save(empresa);
 
 	}
 }
